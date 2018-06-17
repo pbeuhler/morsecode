@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         mTextMessage = (TextView) findViewById(R.id.message);
         mSend = (Button) findViewById(R.id.button);
-        mEdit = (EditText)findViewById(R.id.messageBox);
-        mText = (TextView)findViewById(R.id.textView2);
+        mEdit = (EditText) findViewById(R.id.messageBox);
+        mText = (TextView) findViewById(R.id.textView2);
 
 //        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String result = mEdit.getText().toString();
                 mText.setText(result);
+                TextToMorse test = new TextToMorse("abc");
             }
         });
     }
