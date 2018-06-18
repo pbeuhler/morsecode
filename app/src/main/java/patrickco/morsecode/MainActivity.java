@@ -58,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String result = mEdit.getText().toString();
 //                mText.setText(result);
-                String temp = TextToMorse.returnMapping(result);
+               // String temp = TextToMorse.returnMapping(result);
                 List<Integer> temp2 = TextToMorse.returnMapping2(result);
-                Log.d("output goes here", result + ": "  + temp);
+        //        Log.d("output goes here", result + ": "  + temp);
                 System.out.println(temp2.toString());
                 mText.setText("hi");
             }

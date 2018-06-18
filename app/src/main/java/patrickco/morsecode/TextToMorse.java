@@ -20,6 +20,7 @@ public class TextToMorse {
         map.put("d", new int[]{3,1,1});
         map.put("e", new int[]{1});
         map.put("f", new int[]{1,1,3,1});
+        map.put("g", new int[]{3,3,1});
         map.put("h", new int[]{1,1,1,1});
         map.put("i", new int[]{1, 1});
         map.put("j", new int[]{1, 3, 3, 3});
@@ -64,6 +65,7 @@ public class TextToMorse {
         map2.put("e", "1");
         map2.put("f", "1,1,3,1");
         map2.put("h", "1,1,1,1");
+        map2.put("g", "3,3,1");
         map2.put("i", "1, 1");
         map2.put("j", "1, 3, 3, 3");
         map2.put("k", "3, 1, 3");
@@ -133,7 +135,7 @@ public class TextToMorse {
                 message.add(toAdd);
             }
             //put in spaces if not at the end
-            if (i < in.length()) {
+            if (i < in.length()-1) {
                 message.add(-7);
             }
         }
