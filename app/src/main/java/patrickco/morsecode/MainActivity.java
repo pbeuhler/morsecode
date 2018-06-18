@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,8 +57,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String result = mEdit.getText().toString();
-                mText.setText(result);
-                TextToMorse test = new TextToMorse("abc");
+//                mText.setText(result);
+                String temp = TextToMorse.returnMapping(result);
+                List<Integer> temp2 = TextToMorse.returnMapping2(result);
+                Log.d("output goes here", result + ": "  + temp);
+                System.out.println(temp2.toString());
+                mText.setText("hi");
             }
         });
     }

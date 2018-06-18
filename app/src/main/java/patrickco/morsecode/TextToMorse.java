@@ -1,14 +1,26 @@
 package patrickco.morsecode;
 
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TextToMorse {
     String mMessageText = "";
+    List<Integer> mMessage = new ArrayList<>();
     public static final Map<String, int[]> map = new HashMap<String, int[]>();
 
     static {
         map.put("a", new int[]{1, 3});
+        map.put("b", new int[]{3,1,1,1});
+        map.put("c", new int[]{3,1,3,1});
+        map.put("d", new int[]{3,1,1});
+        map.put("e", new int[]{1});
+        map.put("f", new int[]{1,1,3,1});
+        map.put("h", new int[]{1,1,1,1});
         map.put("i", new int[]{1, 1});
         map.put("j", new int[]{1, 3, 3, 3});
         map.put("k", new int[]{3, 1, 3});
@@ -39,12 +51,93 @@ public class TextToMorse {
         map.put("9", new int[]{3, 3, 3, 3, 1});
         map.put("0", new int[]{3, 3, 3, 3, 3});
 
-        map.put("space", new int[]{3});
-        map.put("word", new int[]{7});
+        map.put(" ", new int[]{-3});
     }
 
-    TextToMorse(String input) {
-        mMessageText = input;
-        System.out.println(map.get("a"));
+    public static final Map<String, String> map2 = new HashMap<String, String>();
+
+    static {
+        map2.put("a", "1, 3");
+        map2.put("b", "3,1,1,1");
+        map2.put("c", "3,1,3,1");
+        map2.put("d", "3,1,1");
+        map2.put("e", "1");
+        map2.put("f", "1,1,3,1");
+        map2.put("h", "1,1,1,1");
+        map2.put("i", "1, 1");
+        map2.put("j", "1, 3, 3, 3");
+        map2.put("k", "3, 1, 3");
+        map2.put("l", "1, 3, 1, 1");
+        map2.put("m", "3, 3");
+        map2.put("n", "3, 1");
+        map2.put("o", "3, 3, 3");
+        map2.put("p", "1, 3, 3, 1");
+        map2.put("q", "3, 3, 1, 3");
+        map2.put("r", "1, 3, 1");
+        map2.put("s", "1, 1, 1");
+        map2.put("t", "3");
+        map2.put("u", "1, 1, 3");
+        map2.put("v", "1, 1, 1, 3");
+        map2.put("w", "1, 3, 3");
+        map2.put("x", "3, 1, 1, 3");
+        map2.put("y", "3, 1, 3, 3");
+        map2.put("z", "3, 3, 1, 1");
+
+        map2.put("1", "1, 3, 3, 3, 3");
+        map2.put("2", "1, 1, 3, 3, 3");
+        map2.put("3", "1, 1, 1, 3, 3");
+        map2.put("4", "1, 1, 1, 1, 3");
+        map2.put("5", "1, 1, 1, 1, 1");
+        map2.put("6", "3, 1, 1, 1, 1");
+        map2.put("7", "3, 3, 1, 1, 1");
+        map2.put("8", "3, 3, 3, 1, 1");
+        map2.put("9", "3, 3, 3, 3, 1");
+        map2.put("0", "3, 3, 3, 3, 3");
+
+        map2.put(" ", "-3");
     }
+
+    TextToMorse() {
+    }
+
+    public static String returnMapping(String input) {
+        String in = input.toLowerCase();
+        String message = "";
+        //grab each input character in lowercase
+        for (int i = 0; i < in.length(); i++) {
+            char character = in.charAt(i);
+            //convert character to Morse byte[]
+            String tempString = map2.get(Character.toString(character));
+            System.out.println(character + ": " + tempString);
+            message += tempString;
+            //put in spaces if not at the end
+            if (i < in.length()) {
+                message += "7";
+            }
+        }
+        return message;
+    }
+
+    public static List<Integer> returnMapping2(String input) {
+        String in = input.toLowerCase();
+        List<Integer> message = new ArrayList<>();
+
+        //grab each input character in lowercase
+        for (int i = 0; i < in.length(); i++) {
+            char character = in.charAt(i);
+            //convert character to Morse byte[]
+            int[] tempArr = map.get(Character.toString(character));
+            System.out.println(character + ": " + Arrays.toString(tempArr));
+            for (int toAdd: tempArr
+                 ) {
+                message.add(toAdd);
+            }
+            //put in spaces if not at the end
+            if (i < in.length()) {
+                message.add(-7);
+            }
+        }
+        return message;
+    }
+
 }
